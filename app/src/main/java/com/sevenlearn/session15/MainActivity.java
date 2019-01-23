@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
     public static final String INTENT_ACTION_TEST="com.sevenlearn.session15.TEST";
     public static final int REQUEST_CODE_TEST = 10001;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         localBroadCastReceiverTest = new LocalBroadCastReceiverTest();
         LocalBroadcastManager.getInstance(this).registerReceiver(localBroadCastReceiverTest, new IntentFilter(INTENT_ACTION_TEST));
 
-
+        // TODO: 1/23/2019 Fix this issue
         connectivityBroadcastReceiver = new ConnectivityBroadcastReceiver();
         registerReceiver(connectivityBroadcastReceiver, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
         noInternetConnectionTv = findViewById(R.id.tv_main_noInternetConnection);
@@ -68,11 +70,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null && networkInfo.isConnected()) {
-                noInternetConnectionTv.setVisibility(View.GONE);
-            } else
-                noInternetConnectionTv.setVisibility(View.VISIBLE);
+            if (connectivityManager!=null){
+                NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    noInternetConnectionTv.setVisibility(View.GONE);
+                } else
+                    noInternetConnectionTv.setVisibility(View.VISIBLE);
+            }
+
         }
     }
 
