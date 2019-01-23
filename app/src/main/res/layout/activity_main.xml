@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_main_noInternetConnection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:padding="12dp"
+        android:text="No Internet Connection!"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_main_startActivityForResultTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Activity for result" />
+
+</LinearLayout>
